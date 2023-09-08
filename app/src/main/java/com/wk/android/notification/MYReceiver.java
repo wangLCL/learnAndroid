@@ -63,7 +63,7 @@ public class MYReceiver extends BroadcastReceiver {
                 Notification.Builder builder1 = new Notification.Builder(context, channelID);
                 Drawable drawable = context.getApplicationInfo().loadIcon(context.getPackageManager());
                 Bitmap bitmap = getBitmapFromDrawable(drawable);
-                builder1.setSmallIcon(R.drawable.tuisong)
+                builder1.setSmallIcon(R.drawable.ic_launcher_background)
                         .setLargeIcon(bitmap)
                         .setContentIntent(contentIntent)
                         .setContentTitle(title)
@@ -73,7 +73,7 @@ public class MYReceiver extends BroadcastReceiver {
                 androidx.core.app.NotificationCompat.Builder builder = new androidx.core.app.NotificationCompat.Builder(context);
                 Drawable drawable = context.getApplicationInfo().loadIcon(context.getPackageManager());
                 Bitmap bitmap = getBitmapFromDrawable(drawable);
-                builder.setSmallIcon(R.drawable.tuisong)
+                builder.setSmallIcon(R.drawable.ic_launcher_background)
                         .setLargeIcon(bitmap)
                         .setContentIntent(contentIntent)
                         .setContentTitle(title)
