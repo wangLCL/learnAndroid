@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wk.android.dialog.MySetting;
+import com.wk.android.dialog.RestDialog;
 import com.wk.android.dialog.SettingDialog;
+import com.wk.android.notification.NotificationUtil;
+import com.wk.android.permission.TonyPermission;
 
 public class MainActivity extends AppCompatActivity implements Js.ChjTimerInter {
     private TextView hour;
@@ -21,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements Js.ChjTimerInter 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ThemeUtils themeUtils = new ThemeUtils(this);
-        themeUtils.hideStatus();
         themeUtils.initStautarbar(R.color.bg_color);
         themeUtils.updateSystemBarContent(false);
         themeUtils.hideNav();
@@ -29,12 +31,24 @@ public class MainActivity extends AppCompatActivity implements Js.ChjTimerInter 
         minutes = findViewById(R.id.minutes);
         seconds = findViewById(R.id.seconds);
 
+        //接受通知
+        TonyPermission permission = new TonyPermission(this);
+        permission.requestNotificationPermission();
+
 //        show3();
         View resetBtn = findViewById(R.id.resetBtn);
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                js.reset();
+//                js.reset();
+                RestDialog dialog = RestDialog.newInstance();
+                dialog.show(getSupportFragmentManager(),"");
+                dialog.setRestListener(new Runnable() {
+                    @Override
+                    public void run() {
+                        js.reset();
+                    }
+                });
             }
         });
         View bg = findViewById(R.id.bg);
@@ -113,5 +127,17 @@ public class MainActivity extends AppCompatActivity implements Js.ChjTimerInter 
     @Override
     public void stop(long time) {
 //        timnew.setText("计时终止" + time);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NotificationUtil.cancelAll(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        NotificationUtil.add(this);
     }
 }

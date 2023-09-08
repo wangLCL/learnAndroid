@@ -34,6 +34,7 @@ public class Js {
 
     public void reset(){
         this.time = 0;
+        if (chjTimerInter != null) chjTimerInter.second(time);
     }
 
     /**

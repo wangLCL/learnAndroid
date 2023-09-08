@@ -18,12 +18,10 @@ public class ThemeUtils {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             context.getWindow().setStatusBarColor(color);
         }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-            View view = new View(context);
-            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    getStatusBarHeight(context)));
-            view.setBackgroundColor(color);
+            WindowManager.LayoutParams localLayoutParams = context.getWindow().getAttributes();
+            localLayoutParams.flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS |
+                    localLayoutParams.flags;
         }
-//        ThemeUtils.updateSystemBarContent(context,true);
     }
 
     public void updateSystemBarContent(boolean isStatus) {
@@ -40,6 +38,11 @@ public class ThemeUtils {
         }
     }
 
+    /**
+     * 获取导航栏的高度
+     * @param context
+     * @return
+     */
     private int getStatusBarHeight(Context context) {
         // 获得状态栏高度
         int resourceId = context.getResources().getIdentifier("status_bar_height",
@@ -47,20 +50,20 @@ public class ThemeUtils {
         return context.getResources().getDimensionPixelSize(resourceId);
     }
 
+    /**
+     * 底部导航栏
+     */
     public void hideNav(){
-//        View decorView = context.getWindow().getDecorView();
-//        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-//        decorView.setSystemUiVisibility(uiOptions);
-
         View decorView = context.getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                ;
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         decorView.setSystemUiVisibility(uiOptions);
     }
 
+    /**
+     * 隐藏导航栏
+     */
     public void hideStatus(){
-//        context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 }
