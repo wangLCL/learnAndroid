@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Android</string>
     <string name="shortcut">startTime</string>
+    <string name="my_default_tile_label">testtile\n</string>
 </resources>

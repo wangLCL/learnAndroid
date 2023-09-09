@@ -38,6 +38,22 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/app_widget_test" />
         </receiver>
+
+
+
+        <service
+            android:name=".tile.MyQSTileService"
+            android:label="@string/my_default_tile_label"
+            android:icon="@drawable/ic_launcher_background"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="true" />
+        </service>
+
     </application>
 
 </manifest>
