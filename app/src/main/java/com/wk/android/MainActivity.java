@@ -3,16 +3,21 @@ package com.wk.android;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.wk.android.constant.Constant;
 import com.wk.android.dialog.MySetting;
 import com.wk.android.dialog.RestDialog;
 import com.wk.android.dialog.SettingDialog;
 import com.wk.android.notification.NotificationUtil;
 import com.wk.android.permission.TonyPermission;
+import com.wk.android.rate.RateUtils;
+import com.wk.android.util.BuildSdkUtils;
+import com.wk.android.util.SharedPreferencesUtils;
 
 public class MainActivity extends AppCompatActivity implements Js.ChjTimerInter {
     private TextView hour;
@@ -30,6 +35,22 @@ public class MainActivity extends AppCompatActivity implements Js.ChjTimerInter 
         hour = findViewById(R.id.hour);
         minutes = findViewById(R.id.minutes);
         seconds = findViewById(R.id.seconds);
+
+        SharedPreferencesUtils utilsInstance = SharedPreferencesUtils.getUtilsInstance();
+        int integer = utilsInstance.getInteger(Constant.enterCount);
+        utilsInstance.putInteger(Constant.enterCount,integer+1);
+        if (utilsInstance.getInteger(Constant.enterCount)>=4 &&
+                utilsInstance.getBoolean(Constant.ratefinish)){
+            //rate
+            utilsInstance.putBoolean(Constant.ratefinish,true);
+            RateUtils utils = new RateUtils(this);
+            if (BuildSdkUtils.sdk21()){
+                utils.newRate();
+            }else {
+                utils.rate();
+            }
+        }
+
 
         //接受通知
         TonyPermission permission = new TonyPermission(this);
