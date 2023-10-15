@@ -13,4 +13,17 @@
         <categories android:name="android.shortcut.conversation" />
         <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
     </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="test_1"
+        android:shortcutShortLabel="@string/shortcut">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.wk.android.MainActivity"
+            android:targetPackage="com.wk.android" />
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+
 </shortcuts>

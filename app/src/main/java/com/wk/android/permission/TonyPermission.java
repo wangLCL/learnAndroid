@@ -1,5 +1,6 @@
 package com.wk.android.permission;
 
+import android.Manifest;
 import android.app.Activity;
 import android.os.Build;
 
@@ -13,15 +14,23 @@ public class TonyPermission {
     }
 
     public void requestNotificationPermission() {
-        if (Build.VERSION.SDK_INT < 33 || hasNotificationPermission()) {
+        if (Build.VERSION.SDK_INT < 33 || hasNotificationPermission(Manifest.permission.POST_NOTIFICATIONS)) {
             return;
         }
         ActivityCompat.requestPermissions(context, new String[]{"android.permission.POST_NOTIFICATIONS"}, 101);
     }
 
-    public  boolean hasNotificationPermission() {
+
+    public void requestShortCutPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || hasNotificationPermission(Manifest.permission.INSTALL_SHORTCUT)) {
+            return;
+        }
+        ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.INSTALL_SHORTCUT}, 102);
+    }
+
+    public  boolean hasNotificationPermission(String permission) {
         try {
-            return ContextCompat.checkSelfPermission(context, "android.permission.POST_NOTIFICATIONS") == 0;
+            return ContextCompat.checkSelfPermission(context, permission) == 0;
         } catch (Exception unused) {
             return false;
         }

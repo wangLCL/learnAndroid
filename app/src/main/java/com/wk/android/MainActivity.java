@@ -16,6 +16,8 @@ import com.wk.android.dialog.SettingDialog;
 import com.wk.android.notification.NotificationUtil;
 import com.wk.android.permission.TonyPermission;
 import com.wk.android.rate.RateUtils;
+import com.wk.android.shortcut.DynShortCut;
+import com.wk.android.shortcut.Guding;
 import com.wk.android.util.BuildSdkUtils;
 import com.wk.android.util.SharedPreferencesUtils;
 
@@ -26,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements Js.ChjTimerInter 
     private Js js;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (!isTaskRoot()){
+            return;
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ThemeUtils themeUtils = new ThemeUtils(this);
@@ -55,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements Js.ChjTimerInter 
         //接受通知
         TonyPermission permission = new TonyPermission(this);
         permission.requestNotificationPermission();
+        permission.requestShortCutPermission();
+
 
 //        show3();
         View resetBtn = findViewById(R.id.resetBtn);
@@ -81,6 +88,13 @@ public class MainActivity extends AppCompatActivity implements Js.ChjTimerInter 
         });
 
         js= new Js(this);
+
+
+        DynShortCut cut = new DynShortCut();
+        cut.addShortCuts(this);
+
+        Guding g = new Guding();
+        g.gd(this);
     }
 
     public void start(){
