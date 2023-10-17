@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!--创建快捷方式-->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- 创建快捷方式 -->
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
     <application
@@ -16,11 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android"
-        tools:targetApi="31" >
-
+        tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="false" />
+        <activity
+            android:name="com.wk.learn.MainView"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,29 +32,33 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
+
         <receiver
             android:name=".TestAppWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/app_widget_test" />
         </receiver>
+
         <service
             android:name=".tile.MyQSTileService"
-            android:label="@string/my_default_tile_label"
+            android:exported="true"
             android:icon="@drawable/ic_launcher_background"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-            android:exported="true">
+            android:label="@string/my_default_tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
-            <meta-data android:name="android.service.quicksettings.ACTIVE_TILE"
+
+            <meta-data
+                android:name="android.service.quicksettings.ACTIVE_TILE"
                 android:value="true" />
         </service>
-
     </application>
 
 </manifest>

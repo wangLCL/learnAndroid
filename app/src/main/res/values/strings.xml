@@ -2,4 +2,9 @@
     <string name="app_name">Android</string>
     <string name="shortcut">startTime</string>
     <string name="my_default_tile_label">testtile\n</string>
+    <string name="question_text">这个是第一个问题吗？</string>
+    <string name="true_btn">true</string>
+    <string name="false_btn">false</string>
+    <string name="true_info">回答的是true</string>
+    <string name="false_info">回答的是false</string>
 </resources>
