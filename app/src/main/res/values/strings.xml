@@ -2,9 +2,17 @@
     <string name="app_name">Android</string>
     <string name="shortcut">startTime</string>
     <string name="my_default_tile_label">testtile\n</string>
-    <string name="question_text">这个是第一个问题吗？</string>
+    <string name="question_text_1">这个是第一个问题吗？</string>
+    <string name="question_text_2">这个是第二个问题吗？</string>
+    <string name="question_text_3">这个是第三个问题吗？</string>
+    <string name="question_text_4">这个是第四个问题吗？</string>
+    <string name="question_text_5">这个是第五个问题吗？</string>
+    <string name="question_text_6">这个是第六个问题吗？</string>
+    <string name="question_text_7">这个是第七个问题吗？</string>
     <string name="true_btn">true</string>
     <string name="false_btn">false</string>
     <string name="true_info">回答的是true</string>
     <string name="false_info">回答的是false</string>
+    <string name="next_btn">next</string>
+    <string name="answer_right">回答正确</string>
 </resources>
