@@ -1,6 +1,8 @@
 package com.wk.learn;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,21 +19,18 @@ import java.util.ArrayList;
 
 public class MainView extends AppCompatActivity {
     private TextView questionTextView;
-    private int questionIndex;
-    private ArrayList<Question> arrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view);
 
-        arrayList = new ArrayList<>();
-        arrayList.add(new Question(R.string.question_text_1,false));
-        arrayList.add(new Question(R.string.question_text_2,false));
-        arrayList.add(new Question(R.string.question_text_3,false));
-        arrayList.add(new Question(R.string.question_text_4,false));
-        arrayList.add(new Question(R.string.question_text_5,false));
-        arrayList.add(new Question(R.string.question_text_6,false));
-        arrayList.add(new Question(R.string.question_text_7,false));
+
+        //首次调用会返回一个新的QuestionModel，再次访问的时候，返回上次创建的。
+        //当activity销毁掉的时候，model也就销毁了。
+        QuestionViewModel questionViewModel = new ViewModelProvider(this).get(QuestionViewModel.class);
+
+//        QuestionViewModel
 
 
         questionTextView = findViewById(R.id.question_text_view);
