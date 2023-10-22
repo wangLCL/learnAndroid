@@ -55,19 +55,18 @@ public class MainView extends AppCompatActivity {
     }
 
     private void updateQuestion() {
-        questionIndex = questionIndex%arrayList.size();
-        questionTextView.setText(arrayList.get(questionIndex).getTextId());
-        questionIndex ++;
+//        questionIndex = questionIndex%arrayList.size();
+//        questionTextView.setText(arrayList.get(questionIndex).getTextId());
+//        questionIndex ++;
     }
 
     private void checkAnswer(boolean userAnswer){
-        questionIndex = questionIndex%arrayList.size();
-        boolean answer = arrayList.get(questionIndex).isAnswer();
-        if (userAnswer == answer) {
-            Toast.makeText(this,R.string.answer_right,Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(this,R.string.answer_right,Toast.LENGTH_LONG).show();
-        }
-
+//        questionIndex = questionIndex%arrayList.size();
+//        boolean answer = arrayList.get(questionIndex).isAnswer();
+//        if (userAnswer == answer) {
+//            Toast.makeText(this,R.string.answer_right,Toast.LENGTH_SHORT).show();
+//        }else {
+//            Toast.makeText(this,R.string.answer_right,Toast.LENGTH_LONG).show();
+//        }
     }
 }
