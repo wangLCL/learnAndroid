@@ -1,5 +1,10 @@
 # 第四章 ui状态的保存和恢复
 
+目标：
+
+- 屏幕旋转之后的数据保存问题
+- 进程消亡导致UI状态丢失的问题
+
 横竖屏切换会导致activity重启，但是数据如何保存？？如何复用上次的数据？
 
 使用ViewModel来保存UI数据
@@ -48,7 +53,12 @@ ViewModel，当属性为fale的时候，就将状态保存在内存中，应对�
 
 进程包含；前台进程和后台进程，activity被杀死是正常的事情，例如用户按下主屏幕，当销毁的时候，数据都被删除，并不去调用完整的生命周期。
 
-1.如何保存UI状态保存，重建activituy？
+1.如何保存UI状态保存，重建activity？
+
+然后重建，让用户感受不到应用程序被杀死了。
+
+> 可以将数据保存在bundle中，只有为结束使用进入停止状态，操作系统就会调用onSaveInstanceState
+
 将数据保存在bundle,只有为使用的activity进入停止状态的时候，操作系统都会调用onSaveInstanceState，停止的会被标记为killable，
 
 ## 复写onSaveInstanceState函数
