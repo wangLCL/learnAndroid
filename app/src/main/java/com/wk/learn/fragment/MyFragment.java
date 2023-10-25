@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.wk.android.R;
+import com.wk.learn.dialog.DateDialogFragment;
 
 public class MyFragment extends Fragment {
     private TextView textView;
@@ -20,7 +21,7 @@ public class MyFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        RecyclerView
+
     }
 
     @Nullable
@@ -35,5 +36,10 @@ public class MyFragment extends Fragment {
     public void onStart() {
         super.onStart();
         textView.setText("xxxxxxxxxxxxxx");
+//        DateDialogFragment dateDialogFragment = new DateDialogFragment();
+//        dateDialogFragment.show(requireFragmentManager(),"xx");
+        DateDialogFragment dateDialogFragment = DateDialogFragment.newInstance();
+        dateDialogFragment.show(requireFragmentManager(),"z");
+
     }
 }
