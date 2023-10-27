@@ -4,6 +4,40 @@ mvc ： model  view  controller
 
 控制层来控制如何显示并且包括数据控制。
 
+## Activity
+
+```java
+
+        arrayList = new ArrayList<>();
+        arrayList.add(new Question(R.string.question_text_1,false));
+        arrayList.add(new Question(R.string.question_text_2,false));
+        arrayList.add(new Question(R.string.question_text_3,false));
+        arrayList.add(new Question(R.string.question_text_4,false));
+        arrayList.add(new Question(R.string.question_text_5,false));
+        questionTextView = findViewById(R.id.question_text_view);
+        updateQuestion();
+        Button trueBtn = findViewById(R.id.true_btn);
+        Button falseBtn = findViewById(R.id.false_btn);
+        Button nextBtn = findViewById(R.id.next_button);
+        trueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAnswer(true);
+                Toast.makeText(MainView.this,"true btn",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        falseBtn.setOnClickListener(view->{
+            checkAnswer(false);
+//            Toast.makeText(MainView.this,"false btn",Toast.LENGTH_SHORT).show();
+        });
+        nextBtn.setOnClickListener(view->{
+            updateQuestion();
+//            Toast.makeText(MainView.this,"next btn",Toast.LENGTH_SHORT).show();
+        });
+
+```
+
 ## tool TextView 标签
 
 使用tool:text可以展示内容，在展示的时候并不显示，运行的时候tool属性会被忽略
