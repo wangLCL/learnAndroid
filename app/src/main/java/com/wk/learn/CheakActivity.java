@@ -26,6 +26,7 @@ public class CheakActivity extends AppCompatActivity {
         TextView answerTextView = findViewById(R.id.answer_text_view);
         findViewById(R.id.show_answer_button).setOnClickListener(view->{
             answerTextView.setText(answer+"");
+            setResultAnswer(answer);
         });
     }
 

@@ -1,6 +1,7 @@
 package com.wk.learn;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
@@ -83,6 +84,20 @@ public class MainView extends AppCompatActivity {
             Toast.makeText(this,R.string.answer_right,Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this,R.string.answer_right,Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode != 99){
+            return;
+        }
+
+        if (resultCode == 100){
+            boolean result = data.getBooleanExtra("result", false);
+            Toast.makeText(MainView.this,result+"",Toast.LENGTH_SHORT).show();
         }
     }
 }
