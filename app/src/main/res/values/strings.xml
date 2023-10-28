@@ -15,4 +15,7 @@
     <string name="false_info">回答的是false</string>
     <string name="next_btn">next</string>
     <string name="answer_right">回答正确</string>
+    <string name="warning_text">Are you sure you want to do this?</string>
+    <string name="show_answer_button">show Answer</string>
+    <string name="check_answer">check Answer</string>
 </resources>

@@ -41,6 +41,13 @@
 
     </Button>
 
+    <Button
+        android:id="@+id/cheat"
+        android:text="@string/check_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </Button>
 </LinearLayout>
 
 

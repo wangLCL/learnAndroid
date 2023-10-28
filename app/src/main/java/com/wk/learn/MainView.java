@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.Gravity;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wk.android.R;
+import com.wk.android.constant.Constant;
 import com.wk.learn.bean.Question;
 import com.wk.learn.dialog.DateDialogFragment;
 
@@ -56,6 +58,11 @@ public class MainView extends AppCompatActivity {
             questionViewModel.moveToNext();
             updateQuestion();
 //            Toast.makeText(MainView.this,"next btn",Toast.LENGTH_SHORT).show();
+        });
+        findViewById(R.id.cheat).setOnClickListener(view->{
+            boolean answer = questionViewModel.getAnswer();
+            Intent intent = CheakActivity.newIntent(MainView.this, answer);
+            startActivity(intent);
         });
     }
 
