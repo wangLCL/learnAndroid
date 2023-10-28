@@ -12,13 +12,13 @@ public class QuestionViewModel extends ViewModel {
     private ArrayList<Question> arrayList;
     public QuestionViewModel(){
         arrayList = new ArrayList<>();
-        arrayList.add(new Question(R.string.question_text_1,false));
+        arrayList.add(new Question(R.string.question_text_1,true));
         arrayList.add(new Question(R.string.question_text_2,false));
-        arrayList.add(new Question(R.string.question_text_3,false));
+        arrayList.add(new Question(R.string.question_text_3,true));
         arrayList.add(new Question(R.string.question_text_4,false));
-        arrayList.add(new Question(R.string.question_text_5,false));
+        arrayList.add(new Question(R.string.question_text_5,true));
         arrayList.add(new Question(R.string.question_text_6,false));
-        arrayList.add(new Question(R.string.question_text_7,false));
+        arrayList.add(new Question(R.string.question_text_7,true));
     }
 
     public boolean getAnswer(){

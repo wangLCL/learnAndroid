@@ -62,7 +62,7 @@ public class MainView extends AppCompatActivity {
         findViewById(R.id.cheat).setOnClickListener(view->{
             boolean answer = questionViewModel.getAnswer();
             Intent intent = CheakActivity.newIntent(MainView.this, answer);
-            startActivity(intent);
+            startActivityForResult(intent,99);
         });
     }
 
