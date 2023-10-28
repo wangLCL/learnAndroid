@@ -8,7 +8,6 @@ import com.wk.learn.bean.Question;
 import java.util.ArrayList;
 
 public class QuestionViewModel extends ViewModel {
-
     private int questionIndex;
     private ArrayList<Question> arrayList;
     public QuestionViewModel(){
@@ -40,5 +39,13 @@ public class QuestionViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
+    }
+
+    public int getQuestionIndex() {
+        return questionIndex;
+    }
+
+    public void setQuestionIndex(int questionIndex) {
+        this.questionIndex = questionIndex;
     }
 }

@@ -69,20 +69,13 @@ ViewModel，当属性为fale的时候，就将状态保存在内存中，应对�
 savedInstanceState.put(key,value);
 ```
 
+## 案例
 
+使用modelView进行数据存储，在发生旋转的时候，会发生销毁操作，在重新创建的时候，会重新获取modelView中的值
 
+从此看出Model的生命周期是activity在旋转的时候重新创建并不会进行销毁。
 
-
-
-
-
-
-
-
-
-
-
-
+saveInstanceState在应用程序自己重建的时候就会调用。
 
 
 
