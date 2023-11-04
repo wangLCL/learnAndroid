@@ -8,8 +8,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.telephony.SmsManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -65,6 +67,24 @@ public class MainView extends AppCompatActivity {
             Intent intent = CheakActivity.newIntent(MainView.this, answer);
             startActivityForResult(intent,99);
         });
+        {
+            Uri parse = Uri.parse("10086");
+            Intent intent = new Intent(Intent.ACTION_SEND, parse);
+            intent.putExtra("sms_body", "heelo");
+        }
+        {
+            Uri smsUri = Uri.parse("smsto:1008611");
+            Intent intent = new Intent(Intent.ACTION_SENDTO, smsUri);
+            intent.putExtra("sms_body", "这是一条测试短信");
+            startActivity(intent);
+        }
+        {
+            SmsManager sms = SmsManager.getDefault();
+            ArrayList<String> xxxxxxxxxxx = sms.divideMessage("xxxxxxxxxxx");
+            for (String s : xxxxxxxxxxx) {
+                sms.sendTextMessage("" + 10086, null, s, null, null);
+            }
+        }
     }
 
     @Override
